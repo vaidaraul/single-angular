@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="LunchCheck">
+  <head>
+    <title>Lunch Checker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="styles/bootstrap.min.css" />
+    <style>
+      .message {
+        font-size: 1.3em;
+        font-weight: bold;
+      }
+      .green {
+        color: green;
+        border: 1px solid green;
+      }
+      .red {
+        color: red;
+        border: 1px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" ng-controller="LunchCheckController">
+      <h1>Lunch Checker</h1>
+
+      <div class="form-group">
+        <input
+          id="lunch-menu"
+          type="text"
+          placeholder="list comma separated dishes you usually have for lunch"
+          class="form-control"
+          ng-model="lunchMenu"
+        />
+      </div>
+      <div class="form-group">
+        <button
+          class="btn btn-default"
+          ng-model="button"
+          ng-click="checkIfTooMuch()"
+        >
+          Check If Too Much
+        </button>
+      </div>
+      <div
+        class="form-group message"
+        ng-show="message"
+        ng-class="{'green': message === 'Enjoy!' || message === 'Too much!', 'red': message === 'Please enter data first'}"
+      >
+        {{ message }}
+      </div>
+    </div>
+  </body>
+</html>
